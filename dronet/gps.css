@@ -1,0 +1,54 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  padding-top: 70px;
+  padding-bottom: 40px;
+  background-image:url(mapping.jpg);
+}
+
+.form-changegps {
+  width: 100%;
+  max-width: 500px;
+  padding: 15px;
+  margin: auto;
+}
+.form-changegps .image {
+	border: 2px solid #111;
+	border-radius: 50px;
+}
+.form-changegps .button {
+	margin-bottom:4px;
+}
+.form-changegps .checkbox {
+  font-weight: 400;
+}
+.form-changegps .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-changegps .form-control:focus {
+  z-index: 2;
+}
+.form-changegps input[type="longitude"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-changegps input[type="latitude"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+#heading{
+	position:absolute;
+	left:10px;
+}
