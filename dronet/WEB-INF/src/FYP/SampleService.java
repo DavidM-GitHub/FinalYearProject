@@ -337,7 +337,7 @@ private String noBackPageScript="<script type = \"text/javascript\" >\r\n" +
 				"        <h1 id=\"heading\" class=\"h2\">Delivery Locations</h1>\r\n" + 
 				"\r\n" + 
 				"<script\r\n" + 
-				"      src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyDvJUTAXrBzuslRyJGhkUCNggCK5hM7nBI&callback=initMap&libraries=&v=weekly\"\r\n" + 
+				"      src=\"https://maps.googleapis.com/maps/api/js?key=key&callback=initMap&libraries=&v=weekly\"\r\n" + 
 				"      async\r\n" + 
 				"    ></script>\r\n" + 
 				"\r\n" + 
