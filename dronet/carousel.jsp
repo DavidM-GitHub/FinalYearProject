@@ -6,16 +6,16 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.80.0">
-    <title>Carousel Template · Bootstrap v5.0</title>
+    <title>Homepage</title>
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/carousel/">
     
-<script type = "text/javascript" >
+<!--<script type = "text/javascript" >
    function preventBack(){window.history.forward();}
     setTimeout("preventBack()", 0);
     window.onunload=function(){null};
-</script>
+</script>-->
     <!-- Bootstrap core CSS -->
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -46,7 +46,7 @@
 <header >
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Dronet</a>
+      <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="carousel">Dronet</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -56,10 +56,7 @@
             <a class="nav-link active" aria-current="page" href="carousel">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">My Profile</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            <a class="nav-link" href="myprofile">My Profile</a>
           </li>
         </ul>
         <ul class="navbar-nav px-3">
@@ -83,33 +80,27 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="orders">
               <span data-feather="file"></span>
-              Orders
+              My Orders
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="browseProducts">
               <span data-feather="shopping-cart"></span>
-              Products
+              Browse Products
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="changeLocation">
               <span data-feather="users"></span>
-              My Details
+              Change Address
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="ordermaps">
               <span data-feather="bar-chart-2"></span>
               Waypoint Map
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="layers"></span>
-              Integrations
             </a>
           </li>
         </ul>
@@ -122,27 +113,27 @@
         </h6>
         <ul class="nav flex-column mb-2">
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="http://localhost:8080/dronet/restful-services/sampleservice/carousel#equipment">
               <span data-feather="file-text"></span>
-              Current month
+              Equipment & Technologies
+            </a>
+          </li>
+		  <li class="nav-item">
+            <a class="nav-link" href="http://localhost:8080/dronet/restful-services/sampleservice/carousel#innovation">
+              <span data-feather="file-text"></span>
+              Innovation
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="http://localhost:8080/dronet/restful-services/sampleservice/carousel#beginnings">
               <span data-feather="file-text"></span>
-              Last quarter
+              New Beginnings
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="http://localhost:8080/dronet/restful-services/sampleservice/carousel#delivery">
               <span data-feather="file-text"></span>
-              Social engagement
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Year-end sale
+              Delivery Process
             </a>
           </li>
         </ul>
@@ -165,7 +156,7 @@
         <div class="container">
           <div class="carousel-caption text-right">
             <h1>Drone Delivery As a Service.</h1>
-            <p>Order today and get your product by the end of the day! <a class="btn btn-lg btn-primary" href="browseProducts">Order Now</a></p>
+            <p>Order today and get your product by the end of the day! <a class="btn btn-dark btn-lg btn-primary" href="browseProducts">Order Now</a></p>
           </div>
         </div>
       </div>
@@ -176,7 +167,7 @@
         <div class="container">
           <div class="carousel-caption" id="caption2">
             <h1>Fast and Efficient.</h1>
-            <p>Drone Missions last no longer than 10 minutes from the time it takes off until the time it returns to us. <a class="btn btn-lg btn-primary" href="dashboard">Learn more</a></p>
+            <p>Drone Missions last no longer than 10 minutes from the time it takes off until the time it returns to us. <a class="btn btn-dark btn-lg btn-primary" href="dashboard">Learn more</a></p>
           </div>
         </div>
       </div>
@@ -187,7 +178,7 @@
         <div class="container">
           <div class="carousel-caption text-end" id="caption3">
             <h1>Need to change your Location?</h1>
-            <p>We deliver everywhere just enter your gps co-ordinates and press submit <a class="btn btn-lg btn-primary" href="changeLocation">Browse gallery</a></p>
+            <p>We deliver everywhere just enter your gps co-ordinates and press submit <a class="btn btn-lg btn-dark btn-primary" href="changeLocation">Browse gallery</a></p>
           </div>
         </div>
       </div>
@@ -210,8 +201,8 @@
   <div class="container marketing">
 
     <!-- Three columns of text below the carousel -->
-    <div class="row">
-      <div class="col-lg-4">     
+    <div class="row" id="equipment">
+      <div class="col-lg-4" >     
 		<img src="https://a248.e.akamai.net/f/248/9086/10h/origin-d5.scene7.com/is/image/bluestembrands/4NN5QC0000010_VA_999" alt="skyviper" width="50%" height="50%">
         <h2>Our Drone</h2>
         <p>The drone we use to make the deliveries is the SkyViper Journey. It is lightweight, durable and has built-in GPS which allows us to send it to precise co-ordinates</p>
@@ -238,7 +229,7 @@
 
     <hr class="featurette-divider">
 
-    <div class="row featurette">
+    <div class="row featurette" id="innovation">
       <div class="col-md-7">
         <h2 class="featurette-heading">Innovation. <span class="text-muted">Forward Thinking.</span></h2>
         <p class="lead">Here at Dronet we are expanding our horizons and looking at innovative ways to deliver pharmaceutical drugs to those in need.</p>
@@ -253,20 +244,21 @@
 
     <hr class="featurette-divider">
 
-    <div class="row featurette">
+    <div class="row featurette" id="beginnings">
       <div class="col-md-7 order-md-2">
         <h2 class="featurette-heading">How we came about. <span class="text-muted">New beginings. </span></h2>
         <p class="lead">Inspired by the current climate where people are limited to their homes as the Corona Virus pandemic has caused havoc accross the world. Dronet came about with the simple but innovative idea to provide Drone As A Service to those in need of medical suplies that cant leave their home as they are elderly, struggle with mobility or even because they are in quarantine</p>
       </div>
       <div class="col-md-5 order-md-1">
-		<img src="https://media.istockphoto.com/photos/drone-delivering-first-aid-box-advancing-medical-industry-logistics-picture-id1172364265?k=6&m=1172364265&s=612x612&w=0&h=ax2BJoe6UzlfOlcQgSviTigsBVHKyxGuUKGcVrtz8zY=" alt="Medical Supplies" width="100%" height="80%">
+	  </br>
+		<img src="https://media.istockphoto.com/photos/drone-delivering-first-aid-box-advancing-medical-industry-logistics-picture-id1172364265?k=6&m=1172364265&s=612x612&w=0&h=ax2BJoe6UzlfOlcQgSviTigsBVHKyxGuUKGcVrtz8zY=" alt="Medical Supplies" width="100%" height="85%">
 
       </div>
     </div>
 
     <hr class="featurette-divider">
 
-    <div class="row featurette">
+    <div class="row featurette" id="delivery">
       <div class="col-md-7">
         <h2 class="featurette-heading">How it works. <span class="text-muted">Delivery Process.</span></h2>
         <p class="lead">The Drone will takeoff and head towards you, it will land at your location for a number of seconds so you can take your product before taking off to the next location or returning to us.</p>

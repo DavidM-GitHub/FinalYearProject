@@ -1,15 +1,19 @@
-
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Order Success</title>
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <link href="http://localhost:8080/dronet/carousel.css" rel="stylesheet">
+<title>REST Example</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://js.stripe.com/v3/">
+	
+	</script>
 
+    <link href="http://localhost:8080/dronet/carousel.css" rel="stylesheet">
 
 </head>
 <body >
+<div class="body">
+    
+	 
 <header >
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
@@ -31,7 +35,7 @@
         </ul>
         <ul class="navbar-nav px-3">
     <li class="nav-item text-nowrap">
-      <a class="nav-link" href="index">Sign out</a>
+      <a class="nav-link" href="#">Sign out</a>
     </li>
   </ul>
       </div>
@@ -68,7 +72,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="ordermaps">
+            <a class="nav-link" href="#">
               <span data-feather="bar-chart-2"></span>
               Waypoint Map
             </a>
@@ -115,28 +119,96 @@
         </ul>
       </div>
     </nav>
+	
+	<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" >
 
-<div >
-    
-	
-			<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-  <div class="container">
-  	<form class="form-inline" action= "http://localhost:8080/dronet/restful-services/sampleservice/orders" method="GET">    
-    <h1 class="mt-5">Order Success!!!</h1>
-    <p class="lead">Once the Drone Flight is initiated, it will be at your location in 2.34 minutes...</p>
-    <p>Check the status of your order on the 
-	<input class="btn btn-dark btn-sm" type="submit" value="Orders Page" /></form></p>
-	
-		<form action= "http://localhost:8080/dronet/restful-services/sampleservice/carousel" method="GET">        
-        <input class="btn btn-dark btn-lg" type="submit" value="Return Home" />
-    </form></br></br>
-  </div>
+	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 id="heading" class="h2">My Details</h1>
+        
+      </div>
+	  <div id="heading">
+	  <h3>Name</h3>
+	  <p>David Murphy</p>
+	  </br>
+	  <h3>Email</h3>
+	  <p>dave@g.c</p>
+	  </br>
+	  <h3>Current Address</h3>
+	  <p>Meadowbank Hill</p>
+	   <form action= "http://localhost:8080/dronet/restful-services/sampleservice/changeLocation" method="GET">
+	<div class="d-grid gap-2 col-2 mx-auto">
+	<input class="w-25 btn btn-dark btn-lg" type="submit" value="Update Address" id="addressbutton"/>
+	</div>
+		  </form>
+		  
+		
+	  
+	  <form action= "http://localhost:8080/dronet/restful-services/sampleservice/changeName" method="GET" id="nameform"  >	 
+    <h3>Change Name</h3>
+    <label for="inputPassword" class="visually-hidden">Name</label>
+    <input type="text" id="name" class="updatebutton" placeholder="Name" name="name" required>
+    <button class="w-20 btn btn-dark btn-primary button mb-1" type="submit">Update Name</button>
+	  </form>
+	  
+	  
+	  
+	  
+	  
+	  
+	  <form action= "http://localhost:8080/dronet/restful-services/sampleservice/changeEmail" method="GET" id="emailform">
+	      <h3>Change Email</h3>
+    <label for="inputPassword" class="visually-hidden">Email</label>
+    <input type="text" id="email" class="updatebutton" placeholder="Email" name="email" required>
+    <button class="w-20 btn btn-dark btn-primary button mb-1" type="submit">Update Email</button>
+	  </form>
+	  
+	  <form action= "http://localhost:8080/dronet/restful-services/sampleservice/changePassword" method="GET">
+	  	      <h3>Change Password</h3>
+			  <p>Enter current password followed by a new one to change password</p>
+    <label for="inputPassword" class="visually-hidden">Current Password</label>
+    <input type="text" id="currentPassword" class="updatebutton" placeholder="Current Password" name="currentPassword" required>
+	<label for="inputPassword" class="visually-hidden">New Password</label>
+    <input type="text" id="newPassword" class="updatebutton" placeholder="New Password" name="newPassword" required>
+    <button class="w-50 btn btn-dark btn-primary button mb-1" type="submit">Update Password</button>
+	  </form>
+	  
+	  
+	<h3>Order History</h3>
+	<div class="card-body" >
+	<!--	<table class="my-table table table-dark table-striped">-->
+	<table class="my-table table-striped table table-hover " >
+	<thead class="table-dark">
+		<tr>
+			<th >Total Orders Placed</th>
+			<th>Recieved</th>
+			<th>Pending</th>
+		</tr>
+		</thead>
+		<tr>
+			<th id="myText1" name="myText1" type="text" scope="row">18</th>
+			<td>5</td>
+			<td>Welonox Melatonin</td>			
+</td>
+		</tr>
+		
+	</table>
+		  <form action= "http://localhost:8080/dronet/restful-services/sampleservice/orders" method="GET">
+	<div class="d-grid gap-2 col-12 mx-auto">
+	<input class="btn btn-dark btn-lg" type="submit" value="View Orders" id="viewOrders"/>
+	</div>
+		  </form>
+
+
+	</div>
+		
+</div>
+
 </main>
 </div>
 </div>
+
+
 	
 	</div>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-
 </body>
 </html>

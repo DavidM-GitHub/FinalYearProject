@@ -6,62 +6,6 @@
     <script src="https://js.stripe.com/v3/">
 	
 	</script>
-	<script>
-function sortTable(n) {
-  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-  table = document.getElementById("myTable");
-  switching = true;
-  //Set the sorting direction to ascending:
-  dir = "asc"; 
-  /*Make a loop that will continue until
-  no switching has been done:*/
-  while (switching) {
-    //start by saying: no switching is done:
-    switching = false;
-    rows = table.rows;
-    /*Loop through all table rows (except the
-    first, which contains table headers):*/
-    for (i = 1; i < (rows.length - 1); i++) {
-      //start by saying there should be no switching:
-      shouldSwitch = false;
-      /*Get the two elements you want to compare,
-      one from current row and one from the next:*/
-      x = rows[i].getElementsByTagName("TD")[n];
-      y = rows[i + 1].getElementsByTagName("TD")[n];
-      /*check if the two rows should switch place,
-      based on the direction, asc or desc:*/
-      if (dir == "asc") {
-        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-          //if so, mark as a switch and break the loop:
-          shouldSwitch= true;
-          break;
-        }
-      } else if (dir == "desc") {
-        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-          //if so, mark as a switch and break the loop:
-          shouldSwitch = true;
-          break;
-        }
-      }
-    }
-    if (shouldSwitch) {
-      /*If a switch has been marked, make the switch
-      and mark that a switch has been done:*/
-      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-      switching = true;
-      //Each time a switch is done, increase this count by 1:
-      switchcount ++;      
-    } else {
-      /*If no switching has been done AND the direction is "asc",
-      set the direction to "desc" and run the while loop again.*/
-      if (switchcount == 0 && dir == "asc") {
-        dir = "desc";
-        switching = true;
-      }
-    }
-  }
-}
-</script>
 
     <link href="http://localhost:8080/dronet/carousel.css" rel="stylesheet">
 
@@ -185,53 +129,47 @@ function sortTable(n) {
 	
 	<div class="card-body">
 	<!--	<table class="my-table table table-dark table-striped">-->
-	<table class="my-table table-striped table table-hover align-middle" id="myTable">
+	<table class="my-table table-striped table table-hover align-middle">
 	<thead class="table-dark">
 		<tr>
-			<th onclick="sortTable(0)">Product Number</th>
-			<th onclick="sortTable(1)">Image</th>
-			<th onclick="sortTable(2)">Name</th>
-			<th onclick="sortTable(3)">Price</th>
-			<th >Purchase Item?</th>
+			<th >Order Number</th>
+			<th>Product</th>
+			<th>Total</th>
+			<th>Delivery Address</th>
+			<th>Order Status</th>
 		</tr>
 		</thead>
 		<tr>
-			<td id="myText1" name="myText1" type="text" scope="row" class="fw-bold">18</td>
+			<th id="myText1" name="myText1" type="text" scope="row">18</th>
 			<td><img src="https://m.media-amazon.com/images/I/315ZRpnHLtL.jpg" height="200" width="200"/></td>
 			<td>Welonox Melatonin</td>
 			<td>25</td>
-			<td style="text-align:center;">
-  <input id="myTextBox1" class="form-check-input" type="checkbox" name="checkbox" value="18" />
+			
 </td>
 		</tr>
 		<tr>
-			<td id="myText2" scope="row">19</td>
+			<th id="myText2" scope="row">19</th>
 			<td><img src="https://www.jeancoutu.com/catalog-images/180166/en/viewer/0/aspirin-aspirin-daily-low-dose-tablets-81-mg-120-units.png" height="200" width="200"/></td>
 			<td>Aspirin</td>
 			<td>45</td>
-			<td style="text-align:center;">
-  <input id="myTextBox2" class="form-check-input" type="checkbox" name="checkbox" value="19" />
+			
 		</tr>
 		<tr>
-			<td id="myText3" scope="row">20</td>
+			<th id="myText3" scope="row">20</th>
 			<td><img src="https://onlinedoctor.lloydspharmacy.com/image/107782/16x9/400/225/51cab9c66cf898faa3bed10488646683/mC/ventolin---picture.jpg" height="200" width="200"/></td>
 			<td>Ventolin Inhalor</td>
 			<td>25</td>
-			<td style="text-align:center;">
-  <input id="myTextBox3" class="form-check-input" type="checkbox" name="checkbox" value="20" />
+			
 		</tr>
 		<tr>
-			<td id="myText4" scope="row">21</td>
+			<th id="myText4" scope="row">21</th>
 			<td><img src="https://www.medicine-online.org/4462-large_default/solpadeine-24-tablets-.jpg" height="200" width="200"/></td>
 			<td>Solpadeine</td>
 			<td>15</td>
-			<td style="text-align:center;">
-  <input id="myTextBox4" class="form-check-input" type="checkbox" name="checkbox"  value="21"/>
+		
 		</tr>
 	</table>
-	<div class="d-grid gap-2 col-12 mx-auto">
-	<input class="btn btn-dark btn-lg" type="submit" value="Proceed to Checkout" id="checkout-button"/>
-	</div>
+	
 	</div>
 	
 
@@ -240,59 +178,7 @@ function sortTable(n) {
 </div>
 
 
-	<script>
-	window.onload = function checkoutActive() {
-    // Create an instance of the Stripe object with your publishable API key
-    var stripe = Stripe("pk_test_51INyTFGtkOOMud5PO6NkF9GW7kibpp8thYn38BSYTo59o9QHzNiD3OTMe7GgUdh3IXjsEFF7cYBDTEYG1RcFBJcy00z4hcmnkB");
-    var checkoutButton = document.getElementById("checkout-button");
 	
-	console.log("Active");
-    checkoutButton.addEventListener("click", function () {
-		//CHECK IF ONLY 1 CHECKBOX IS TICKED
-		var boxes = document.getElementsByName("checkbox");
-		var tb=[];
-		var x=0;
-		for(let i=0;i<boxes.length;i++){
-			if(boxes[i].checked===true){
-				tb[x]=boxes[i].value;
-				x+=1;
-			}
-		}
-		console.log(tb[0]);
-		console.log(tb[1]===null);
-	
-		//ALERT USER IF INVALID ORDER OTHERWISE PROCEED TO CHECKOUT
-		if(tb[1]!=null){
-			alert("Please Select 1 Product Only...");
-		}
-		else{
-		
-      fetch("/dronet/restful-services/sampleservice/create-checkout-session/"+tb[0], {
-        method: "POST",
-      })
-        .then(function (response) {
-          return response.json();
-        })
-        .then(function (session) {
-          return stripe.redirectToCheckout({ sessionId: session.id });
-        })
-        .then(function (result) {
-          // If redirectToCheckout fails due to a browser or network
-          // error, you should display the localized error message to your
-          // customer using error.message.
-          if (result.error) {
-            alert(result.error.message);
-		
-		   
-          }
-        })
-        .catch(function (error) {
-			alert("You can only purchase 1 product at a time");
-			console.error("Error:", error);		  
-        });
-		}});
-	}
-  </script>
 	</div>
 </body>
 </html>

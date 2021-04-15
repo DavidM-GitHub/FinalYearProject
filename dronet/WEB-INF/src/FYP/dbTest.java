@@ -1,19 +1,115 @@
 package FYP; 
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonSyntaxException;
+
+import FYP.GeocodeResponse.Result;
+
 public class dbTest {
 
-	public dbTest() {
-//		DeliveryDAO deliveryDAO=new DeliveryDAO();
+	public dbTest() throws JsonSyntaxException, JsonIOException, MalformedURLException, IOException {
+		
+//		DecimalFormat df = new DecimalFormat("#.##"); // Set your desired format here.
+//
+//		double distanceInMetres=distFrom(53.502956,-6.450588,53.5039841,-6.454939);
+//		double sleepTime=35;//sleep+landing+takeoff time
+//		int speed=5;//5 m/s
+//		double flightDuration=((distanceInMetres/speed)+sleepTime)/60;
+//		System.out.println(flightDuration);
+//		String flightDuratio="1.6154461669921873";
+//		String time=df.format(flightDuratio);
+//		System.out.println(time);
+//		
+//String[] duration=time.split("\\.");
+//System.out.println(duration[1]);
+//int sec=Integer.parseInt(duration[1]);
+//System.out.println(sec);
+//sec=sec*60;
+//		System.out.println("Estimated Delivery Duration: "+flightDuratio);
+//		String flightDuration=duration[0]+"."+sec;
+//		String formattedTime=df.format(Double.parseDouble(flightDuration));
+//		System.out.println(formattedTime);
+//		
+		
+		DeliveryDAO deliveryDAO=new DeliveryDAO();
+//		
+//		Customer customer=deliveryDAO.getCustomerById(78);
+//		//Product p4=new Product("Solpadeine","https://www.medicine-online.org/4462-large_default/solpadeine-24-tablets-.jpg",12);
+//		Product product=deliveryDAO.getProductById(21);
+//		ProductOrder order=new ProductOrder(customer, product, customer.getLatitude(),customer.getLongitude(), product.getPrice(),"ordered");
+////		//String orderstatus)
+////		Customer c3=new Customer("Dave","dave@g.c","p123");
+////
+////		ProductOrder po=new ProductOrder(c3,p4,"53.5032596","-6.4508143",p4.getPrice(),"Ordered");
+//		deliveryDAO.persistProductOrder(order);
+//		
+		ProductOrder order1=deliveryDAO.getProductOrderById(124);
+		order1.setLatitude("53.4997761");
+		order1.setLongitude("-6.4512793");
+		deliveryDAO.mergeProductOrder(order1);
+		
+		ProductOrder order2=deliveryDAO.getProductOrderById(125);
+		order2.setLatitude("53.4997125");
+		order2.setLongitude("-6.4513132");
+		deliveryDAO.mergeProductOrder(order2);
+
+//		Customer cust=deliveryDAO.getCustomerById(42);
+//		cust.setAdmin("Yes");
+//		deliveryDAO.mergeCustomer(cust);
+
+		
 //		DroneFlight p=new DroneFlight(1.58229,5.9779,"0.04",80,"00:04:30.459000",3);
 //		deliveryDAO.persistDroneFlight(p);
 //		DroneFlight q=new DroneFlight(1.49898,5.98769,"0.012",90,"00:04:20.459000",3);
 //		deliveryDAO.persistDroneFlight(q);
-//		
-		System.out.println(9%3);
-		//double currentLongitude, double currentLatitude, String altitude, int batteryPercentage,
+		//String latitude="1600 Amphitheatre Pkwy, Mountain View, CA 94043, USA";
+//		String latitude="37.4222585,-122.0840265";
+//		Gson gson = new Gson();
+//		long lastRequest = 0L;
+//		String key="&key=AIzaSyCaRGxXQ8eIkhPlnUojB42dQbgEQSprSBA";
+//		String hq="53.502956, -6.450588";
+////		
+//		String[] words=latitude.split(" ");
+//		StringBuilder sb = new StringBuilder();
+//        for (String string : words) {
+//           if (sb.length() > 0) {
+//                sb.append('+');
+//            }
+//            sb.append(URLEncoder.encode(latitude.replace(' ', '+'), "UTF-8"));
+//        }
+//        String url = "https://maps.googleapis.com/maps/api/geocode/json?&latlng=" + sb.toString()+key;
+//        // Google limits this web service to 2500/day and 10 requests/s
+//        synchronized (this) {
+//            try {
+//                long elapsed = System.currentTimeMillis() - lastRequest;
+//                if (elapsed < 100) {
+//                    try {
+//                        Thread.sleep(100 - elapsed);
+//                    } catch (InterruptedException e) {
+//                    }
+//                }
+//                GeocodeResponse response=gson.fromJson(new BufferedReader(new InputStreamReader(new URL(url).openStream())), GeocodeResponse.class);
+//                List<Result> results= response.getResults();
+//               // System.out.println(results.toString()+response.getStatus().toString());
+//                
+//                System.out.println(results.get(0).getFormatted_address());
+//                
+//            } finally {
+//                lastRequest = System.currentTimeMillis();
+//            }
+//        }		//double currentLongitude, double currentLatitude, String altitude, int batteryPercentage,
 		//String duration, int numWaypoint
 		//DroneFlight df=new DroneFlight(1.5,5.5,"2 metres",98,"00:02:59.459000",2);
 		//deliveryDAO.persistDroneFlight(df);
@@ -22,13 +118,7 @@ public class dbTest {
 //		Product p1=new Product("Welonox Melatonin","https://m.media-amazon.com/images/I/315ZRpnHLtL.jpg",25);
 //		Product p2=new Product("Aspirin","https://www.jeancoutu.com/catalog-images/180166/en/viewer/0/aspirin-aspirin-daily-low-dose-tablets-81-mg-120-units.png",45);
 //		Product p3=new Product("Ventolin Inhalor","https://onlinedoctor.lloydspharmacy.com/image/107782/16x9/400/225/51cab9c66cf898faa3bed10488646683/mC/ventolin---picture.jpg",34);
-//		Product p4=new Product("Solpadeine","https://www.medicine-online.org/4462-large_default/solpadeine-24-tablets-.jpg",12);
-//		//ProductOrder(Customer customer, Product product, String longitude, String latitude, double total,
-//		//String orderstatus)
-//		Customer c3=new Customer("Dave","dave@g.c","p123");
-//
-//		ProductOrder po=new ProductOrder(c3,p4,"53.5032596","-6.4508143",p4.getPrice(),"Ordered");
-//		deliveryDAO.persistProductOrder(po);
+		
 
 //
 //		deliveryDAO.persistProduct(p1);
@@ -113,7 +203,21 @@ public class dbTest {
 		
 	}
 	
-	public static void main(String[] args) {
+	public static float distFrom(double lat1, double lng1, double lat2, double lng2) {
+	    double earthRadius = 6371000; //meters
+	    double dLat = Math.toRadians(lat2-lat1);
+	    double dLng = Math.toRadians(lng2-lng1);
+	    double a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+	               Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) *
+	               Math.sin(dLng/2) * Math.sin(dLng/2);
+	    double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+	    float dist = (float) (earthRadius * c);
+
+	    return dist;
+	    }
+	
+
+	public static void main(String[] args) throws JsonSyntaxException, JsonIOException, MalformedURLException, IOException {
 		new dbTest();
 	}
 }

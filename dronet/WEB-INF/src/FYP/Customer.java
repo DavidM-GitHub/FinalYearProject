@@ -32,8 +32,9 @@ public class Customer {
 	private String password;	
 	private String longitude;
 	private String latitude;
-	@OneToMany(fetch = FetchType.EAGER)
-	private List<Product> products=new ArrayList<Product>();
+	
+	
+	String admin;
 	
 	public Customer() {
 		
@@ -41,15 +42,22 @@ public class Customer {
 	
 	
 
-	public Customer(String name, String email, String password) {
+	public Customer(String name, String email, String password,String admin) {
 		super();
 		this.name = name;
 		this.email = email;
 		this.password = password;
+		this.admin=admin;
 	}
 
 
 
+	public String getAdmin() {
+		return admin;
+	}
+
+
+	@XmlElement
 	public String getLongitude() {
 		return longitude;
 	}
@@ -61,7 +69,7 @@ public class Customer {
 	}
 
 
-
+	@XmlElement
 	public String getLatitude() {
 		return latitude;
 	}
@@ -71,19 +79,6 @@ public class Customer {
 	public void setLatitude(String latitude) {
 		this.latitude = latitude;
 	}
-
-
-
-	public List<Product> getProducts() {
-		return products;
-	}
-
-
-
-	public void setProducts(List<Product> products) {
-		this.products = products;
-	}
-
 
 
 	@XmlElement
@@ -119,21 +114,18 @@ public class Customer {
 		this.name = name;
 	}
 
-	@XmlElement
-	public List<Product> getProduct() {
-		return products;
-	}
-
-	public void buyProduct(Product product) {
-		this.products.add(product);
-	}
-
-
 
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", longitude="
-				+ longitude + ", latitude=" + latitude + ", products=" + products + "]";
+				+ longitude + ", latitude=" + latitude ;
+	}
+
+
+
+	public void setAdmin(String string) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

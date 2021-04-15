@@ -32,6 +32,12 @@ table{
 	left:80px;
 }
 
+.container {
+  width: auto;
+  max-width: 680px;
+  padding: 0 15px;
+}
+
 .barchart{
 	background-color:#111;
 	width:1000px;

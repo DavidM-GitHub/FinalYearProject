@@ -121,11 +121,9 @@
 	
 			<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
   <div class="container">
-  	<form class="form-inline" action= "http://localhost:8080/dronet/restful-services/sampleservice/orders" method="GET">    
-    <h1 class="mt-5">Order Success!!!</h1>
-    <p class="lead">Once the Drone Flight is initiated, it will be at your location in 2.34 minutes...</p>
-    <p>Check the status of your order on the 
-	<input class="btn btn-dark btn-sm" type="submit" value="Orders Page" /></form></p>
+    <h1 class="mt-5">Personal information Updated</h1>
+    <p class="lead">You have successfully updated your details! </p>
+    
 	
 		<form action= "http://localhost:8080/dronet/restful-services/sampleservice/carousel" method="GET">        
         <input class="btn btn-dark btn-lg" type="submit" value="Return Home" />

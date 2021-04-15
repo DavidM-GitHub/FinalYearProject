@@ -36,6 +36,7 @@ public class ProductOrder {
 	private String latitude;
 	private double total;
 	private String orderstatus;
+	private String deliveryDuration;
 
 
 
@@ -48,8 +49,8 @@ public class ProductOrder {
 	
 
 
-	public ProductOrder(Customer customer, Product product, String longitude, String latitude, double total,
-			String orderstatus) {
+	public ProductOrder(Customer customer, Product product, String latitude, String longitude, double total,
+			String orderstatus,String deliveryDuration) {
 		super();
 		this.customer = customer;
 		this.product = product;
@@ -57,7 +58,40 @@ public class ProductOrder {
 		this.latitude = latitude;
 		this.total = product.getPrice();
 		this.orderstatus = orderstatus;
+		this.deliveryDuration=deliveryDuration;
 	}
+
+
+
+
+	public double getTotal() {
+		return total;
+	}
+
+
+
+
+
+	public void setTotal(double total) {
+		this.total = total;
+	}
+
+
+
+
+
+	public String getDeliveryDuration() {
+		return deliveryDuration;
+	}
+
+
+
+
+
+	public void setDeliveryDuration(String deliveryDuration) {
+		this.deliveryDuration = deliveryDuration;
+	}
+
 
 
 
