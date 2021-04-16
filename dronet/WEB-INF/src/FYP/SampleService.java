@@ -482,7 +482,7 @@ private String error="<html>\r\n" +
 				"        <h1 id=\"heading\" class=\"h2\">Delivery Locations</h1>\r\n" + 
 				"\r\n" + 
 				"<script\r\n" + 
-				"      src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyCaRGxXQ8eIkhPlnUojB42dQbgEQSprSBA&callback=initMap&libraries=&v=weekly\"\r\n" + 
+				"      src=\"https://maps.googleapis.com/maps/api/js?key=myKEY&callback=initMap&libraries=&v=weekly\"\r\n" + 
 				"      async\r\n" + 
 				"    ></script>\r\n" + 
 				"\r\n" + 
@@ -1739,7 +1739,7 @@ private String error="<html>\r\n" +
 	
 	public String getAddress(String latitude,String longitude) throws JsonSyntaxException, JsonIOException, MalformedURLException, IOException {
 		long lastRequest = 0L;
-		String key="&key=AIzaSyCaRGxXQ8eIkhPlnUojB42dQbgEQSprSBA";
+		String key="&key=myKEY";
 //		
 		String latlng=latitude+","+longitude;
 		String[] words=latlng.split(" ");
@@ -2558,9 +2558,9 @@ return success;
 		request.getSession(true);
 		HttpSession session = request.getSession();		
 		String email=session.getAttribute("user").toString();
-	//	String url="https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyCaRGxXQ8eIkhPlnUojB42dQbgEQSprSBA";
+	//	String url="https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=mykey";
 		
-		String key="&key=AIzaSyCaRGxXQ8eIkhPlnUojB42dQbgEQSprSBA";
+		String key="&key=mykey";
 //		
 		String[] words=address.split(" ");
 		StringBuilder sb = new StringBuilder();
