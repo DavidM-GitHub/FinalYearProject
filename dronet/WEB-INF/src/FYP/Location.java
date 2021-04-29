@@ -27,4 +27,4 @@ public class Location {
     public void setLng(double lng) {
         this.lng = lng;
     }
-}
+} 

@@ -134,7 +134,7 @@
 	  <p>dave@g.c</p>
 	  </br>
 	  <h3>Current Address</h3>
-	  <p>Meadowbank Hill</p>
+	  <p class="col-4">Meadowbank Hill Meadowbank Hill Meadowbank Hill Meadowbank Hill</p>
 	   <form action= "http://localhost:8080/dronet/restful-services/sampleservice/changeLocation" method="GET">
 	<div class="d-grid gap-2 col-2 mx-auto">
 	<input class="w-25 btn btn-dark btn-lg" type="submit" value="Update Address" id="addressbutton"/>
@@ -174,9 +174,9 @@
 	  
 	  
 	<h3>Order History</h3>
-	<div class="card-body" >
+	<div class="card-body col-11" id="ordertable">
 	<!--	<table class="my-table table table-dark table-striped">-->
-	<table class="my-table table-striped table table-hover " >
+	<table  class="my-table table-striped table table-hover " >
 	<thead class="table-dark">
 		<tr>
 			<th >Total Orders Placed</th>

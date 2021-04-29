@@ -37,7 +37,7 @@ public class DroneFlight {
 		
 	}
 
-
+ 
 	
 
 	public DroneFlight(double currentLongitude, double currentLatitude, String altitude, int batteryPercentage,

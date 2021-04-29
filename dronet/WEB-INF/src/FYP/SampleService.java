@@ -56,6 +56,28 @@ public class SampleService {
 	public Map<String,Object> session=new HashMap<String,Object>();
 	private static Gson gson = new Gson();
 	private volatile long lastRequest = 0L;
+	private String noStock="<html>\r\n" + 
+			"<head>\r\n" + 
+			"<meta http-equiv=\"Content-Type\" content=\"text/html; charset=ISO-8859-1\">\r\n" + 
+			"<title>Error</title>\r\n" + 
+			"		<link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl\" crossorigin=\"anonymous\">\r\n" + 
+			"\r\n" + 
+			"    <link href=\"http://localhost:8080/dronet/signin.css\" rel=\"stylesheet\">\r\n" + 
+			"\r\n" + 
+			"</head>\r\n" + 
+			"<body class=\"text-center\">\r\n" + 
+			"    \r\n" + 
+			"	 <div class=\"container\">\r\n" + 
+			"	<h2 class=\"error text-danger\">Insufficient Stock to Fulfil Your Order</h2>\r\n" + 
+			"\r\n" + 
+			"		<h3>Apologies For The Inconvenience</h3>\r\n" + 
+			"		<form action= \"http://localhost:8080/dronet/restful-services/sampleservice/browseProducts\" method=\"GET\"> \r\n" + 
+			"	<button class=\"w-50 btn btn-lg btn-primary button\" type=\"submit\">Browse Products</button>\r\n" + 
+			"	    </form></br>\r\n" + 
+			"	</div>\r\n" + 
+			"	<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js\" integrity=\"sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0\" crossorigin=\"anonymous\"></script>\r\n" + 
+			"</body>\r\n" + 
+			"</html>";
 	private String loggedOut="\r\n" + 
 			"<html>\r\n" + 
 			"<head>\r\n" + 
@@ -218,7 +240,7 @@ private String indexPage="<!doctype html>\r\n" +
 		"			<form action= \"http://localhost:8080/dronet/restful-services/sampleservice/registration\" method=\"GET\"> \r\n" + 
 		"	<button class=\"w-100 btn btn-lg btn-primary\" type=\"submit\">Register</button>\r\n" + 
 		"	</form>\r\n" + 
-		"    <p class=\"mt-5 mb-3 text-muted\">&copy; 2017–2021</p>\r\n" + 
+		"    <p class=\"mt-5 mb-3 text-muted\">&copy; 2020-2021</p>\r\n" + 
 		"</main>\r\n" + 
 		"\r\n" + 
 		"\r\n" + 
@@ -317,14 +339,11 @@ private String error="<html>\r\n" +
 		DeliveryDAO deldao=new DeliveryDAO();
 		File f;
 		Customer customer=deldao.getCustomerByEmail(email);
-		System.out.println("customer email "+customer.getName());
-		System.out.println("Email entrered"+name);
 		if(customer.getName()!=null ||(!admin.equalsIgnoreCase("yes")&&!admin.equalsIgnoreCase("no"))) {	
 			System.out.println("error");
 			f=new File("C:\\Program Files\\Apache Software Foundation\\Tomcat 8.5\\webapps\\dronet\\error1.jsp");
 			
 		}else {
-			System.out.println("gps");
 			Customer customer1=new Customer(name,email,password,admin);
 			deldao.persistCustomer(customer1);
 			request.getSession(true);
@@ -482,7 +501,7 @@ private String error="<html>\r\n" +
 				"        <h1 id=\"heading\" class=\"h2\">Delivery Locations</h1>\r\n" + 
 				"\r\n" + 
 				"<script\r\n" + 
-				"      src=\"https://maps.googleapis.com/maps/api/js?key=myKEY&callback=initMap&libraries=&v=weekly\"\r\n" + 
+				"      src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyCaRGxXQ8eIkhPlnUojB42dQbgEQSprSBA&callback=initMap&libraries=&v=weekly\"\r\n" + 
 				"      async\r\n" + 
 				"    ></script>\r\n" + 
 				"\r\n" + 
@@ -570,7 +589,7 @@ private String error="<html>\r\n" +
 		double min=1000,min1=1000,min2=1000,min3=1000;
 		
 		int over=0;int under=0;int between=0;
-		int mel=0;int asp=0;int vent=0;int solp=0;
+		int mel=0;int asp=0;int vent=0;int solp=0;int zinc=0;int vitd=0;
 		for (ProductOrder order:orders) {
 			int id=order.getProduct().getId();
 			if(id==18) {
@@ -581,7 +600,12 @@ private String error="<html>\r\n" +
 				vent++;
 			}else if(id==21) {
 				solp++;
+			}else if(id==163) {
+				zinc++;
+			}else if(id==164) {
+				vitd++;
 			}
+			
 		}
 		
 		
@@ -645,12 +669,13 @@ private String error="<html>\r\n" +
 		duration2=duration2/count2;
 		duration3=duration3/count3;
 //		
+		System.out.println("duration"+ duration1);
 	String sDuration=getFormattedDuration(duration);
 	String sDuration1=getFormattedDuration(duration1);
 	String sDuration2=getFormattedDuration(duration2);
 	String sDuration3=getFormattedDuration(duration3);
 
-		
+		System.out.println("sduration "+sDuration1);
 		
 //		
 		String datajsp="<!doctype html>\r\n" + 
@@ -665,7 +690,7 @@ private String error="<html>\r\n" +
 				"			<link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl\" crossorigin=\"anonymous\">\r\n" + 
 				"\r\n" + 
 				"	    <link rel=\"canonical\" href=\"https://getbootstrap.com/docs/5.0/examples/dashboard/\">\r\n" + 
-				"	  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js\"></script>\r\n" + 
+				"	  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js\"></script>\r\n" + noBackPageScript+
 				"\r\n" + 
 				"	    \r\n" + 
 				"\r\n" + 
@@ -796,11 +821,10 @@ private String error="<html>\r\n" +
 				"	      <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom\">\r\n" + 
 				"	        <h1 id=\"heading\"class=\"h2\">Dashboard</h1>\r\n" + 
 				"	      </div>\r\n" + 
-				"		 	  <h2 class=\"h3\" id=\"flighttime\">DroneMission Flight Time</h1>\r\n" + 
+				"		 	  <h2 id=\"flighttime\">Drone Mission Flight Time Data(mins)</h2>\r\n" + 
 				"		  <div class=\"chart\">\r\n" + 
 				"		 <canvas id=\"chart\"></canvas>\r\n" + 
 				"		 </div>\r\n" + 
-				"<h2>Flight Time Data</h2>\r\n" + 
 				"<h5>Average Flight Time: "+sDuration+"</h5>"+
 				"      <div class=\"table-responsive\">\r\n" + 
 				"        <table class=\"table table-striped table-sm\">\r\n" + 
@@ -814,22 +838,22 @@ private String error="<html>\r\n" +
 				"          </thead>"+ 
 				"	          <tbody>\r\n" + 
 				"	            <tr>\r\n" + 
-				"	              <td>All Deliveries</td>\r\n" + 
-				"	              <td>"+df.format(duration)+"</td>\r\n" + 
-				"	              <td>"+df.format(max)+"</td>\r\n" + 
-				"	              <td>"+df.format(min)+"</td>\r\n" + 
+				"	              <th>All Deliveries</th>\r\n" + 
+				"	              <td>"+df.format(duration/60)+"</td>\r\n" + 
+				"	              <td>"+df.format(max/60)+"</td>\r\n" + 
+				"	              <td>"+df.format(min/60)+"</td>\r\n" + 
 				"	            </tr>\r\n" + 
 				"	          </tbody>\r\n" + 
 				"	        </table>\r\n" + 
 				"		 </br></br>\r\n" + 
-				"		 	 	 	 <h2 class=\"h3\" id=\"wflighttime\">Flight Time For Missions With Different Waypoints</h1>\r\n" + 
+				"		 	 	 	 <h2 id=\"wflighttime\">Flight Time Data For Missions With Different Waypoints (mins)</h2>\r\n" + 
 				"	<div class=\"barchart\">\r\n" + 
 				"		 <canvas id=\"myChart\"></canvas>\r\n" + 
 				"		 </div>\r\n" + 
-				"<h2>Flight Time Data for different Waypoints</h2>\r\n" + 
-				"<h5>Average Flight Time (1 Waypoint): "+sDuration1+"</h5>"+
-				"<h5>Average Flight Time (2 Waypoints): "+sDuration2+"</h5>"+
-				"<h5>Average Flight Time (3 Waypoints): "+sDuration3+"</h5>"+
+				"<h5>Average Flight Time</h5>"+
+				"<h5>1 Waypoint Mission: "+sDuration1+"</h5>"+
+				"<h5>2 Waypoint Mission: "+sDuration2+"</h5>"+
+				"<h5>3 Waypoint Mission: "+sDuration3+"</h5>"+
 				"      <div class=\"table-responsive\">\r\n" + 
 				"        <table class=\"table table-striped table-sm\">\r\n" + 
 				"          <thead>\r\n" + 
@@ -841,31 +865,30 @@ private String error="<html>\r\n" +
 				"            </tr>\r\n" + 
 				"          </thead>"+ 
 				"	            <tr>\r\n" + 
-				"	              <td>Delivery with 1 Waypoint</td>\r\n" + 
-				"	              <td>"+df.format(duration1)+"</td>\r\n" + 
-				"	              <td>"+df.format(max1)+"</td>\r\n" + 
-				"	              <td>"+df.format(min1)+"</td>\r\n" + 
+				"	              <th>Delivery with 1 Waypoint</th>\r\n" + 
+				"	              <td>"+df.format(duration1/60)+"</td>\r\n" + 
+				"	              <td>"+df.format(max1/60)+"</td>\r\n" + 
+				"	              <td>"+df.format(min1/60)+"</td>\r\n" + 
 				"	            </tr>\r\n" + 
 				"	            <tr>\r\n" + 
-				"	              <td>Delivery with 2 Waypoints</td>\r\n" + 
-				"	              <td>"+df.format(duration2)+"</td>\r\n" + 
-				"	              <td>"+df.format(max2)+"</td>\r\n" + 
-				"	              <td>"+df.format(min2)+"</td>\r\n" + 
+				"	              <th>Delivery with 2 Waypoints</th>\r\n" + 
+				"	              <td>"+df.format(duration2/60)+"</td>\r\n" + 
+				"	              <td>"+df.format(max2/60)+"</td>\r\n" + 
+				"	              <td>"+df.format(min2/60)+"</td>\r\n" + 
 				"	            </tr>\r\n" + 
 				"	            <tr>\r\n" + 
-				"	              <td>Delivery with 3 Waypoints</td>\r\n" + 
-				"	              <td>"+df.format(duration3)+"</td>\r\n" + 
-				"	              <td>"+df.format(max3)+"</td>\r\n" + 
-				"	              <td>"+df.format(min3)+"</td>\r\n" + 
+				"	              <th>Delivery with 3 Waypoints</th>\r\n" + 
+				"	              <td>"+df.format(duration3/60)+"</td>\r\n" + 
+				"	              <td>"+df.format(max3/60)+"</td>\r\n" + 
+				"	              <td>"+df.format(min3/60)+"</td>\r\n" + 
 				"	            </tr>\r\n" + 
 				"	          </tbody>\r\n" + 
 				"	        </table>\r\n" + 
 				"		 </br></br>\r\n" + 
-				"		 	 		 	 	 <h2 class=\"h3\" id=\"underover\">Flight Time Under/Over/Between 3 and 4 minutes</h1>\r\n" + 
+				"		 	 		 	 	 <h2 id=\"underover\">Flight Time Data for Missions Under/Over/Between 3 and 4 minutes</h2>\r\n" + 
 				"		 <div class=\"piechart\">\r\n" + 
 				"		 <canvas id=\"pie\"></canvas>\r\n" + 
 				"		 </div>\r\n" + 
-				"		  <h2>Flight Time Data Under/Over/Between 3 and 4 Minutes</h2>\r\n" + 
 				"	      <div class=\"table-responsive\">\r\n" + 
 				"	        <table class=\"table table-striped table-sm\">\r\n" + 
 				"	          <thead>\r\n" + 
@@ -878,7 +901,7 @@ private String error="<html>\r\n" +
 				"	          </thead>\r\n" + 
 				"	          <tbody>\r\n" + 
 				"	            <tr>\r\n" + 
-				"	              <td>Number of Flights</td>\r\n" + 
+				"	              <th>Number of Flights</th>\r\n" + 
 				"	              <td>"+under+"</td>\r\n" + 
 				"	              <td>"+over+"</td>\r\n" + 
 				"	              <td>"+between+"</td>\r\n" + 
@@ -886,10 +909,9 @@ private String error="<html>\r\n" +
 				"	          </tbody>\r\n" + 
 				"	        </table>\r\n" + 
 				"		 </br></br>\r\n" + 
-				"		 	 		 	 	 <h2 class=\"h3\" id=\"productsbought\">Number of Products Bought</h1>\r\n" + 
+				"		 	 		 	 	 <h2 id=\"productsbought\">Number of Products Purchased</h2>\r\n" + 
 				"		 <div class=\"doughnut\">\r\n" + 
 				"		 <canvas id=\"doughnut\"></canvas>\r\n" + 
-				"		  <h2>Product Data</h2>\r\n" + 
 				"	      <div class=\"table-responsive\">\r\n" + 
 				"	        <table class=\"table table-striped table-sm\">\r\n" + 
 				"	          <thead>\r\n" + 
@@ -899,15 +921,19 @@ private String error="<html>\r\n" +
 				"	              <th>Aspirin</th>\r\n" + 
 				"	              <th>Ventolin Inhalor</th>\r\n" + 
 				"	              <th>Solpadeine Capsules</th>\r\n" + 
+				"	              <th>Zinc Tablets</th>\r\n" + 
+				"	              <th>Vitamin D Capsules</th>\r\n" + 
 				"	            </tr>\r\n" + 
 				"	          </thead>\r\n" + 
 				"	          <tbody>\r\n" + 
 				"	            <tr>\r\n" + 
-				"	              <td>Products Sold</td>\r\n" + 
+				"	              <th>Products Sold</th>\r\n" + 
 				"	              <td>"+mel+"</td>\r\n" + 
 				"	              <td>"+asp+"</td>\r\n" + 
 				"	              <td>"+vent+"</td>\r\n" + 
 				"	              <td>"+solp+"</td>\r\n" + 
+				"	              <td>"+zinc+"</td>\r\n" + 
+				"	              <td>"+vitd+"</td>\r\n" + 
 				"	            </tr>\r\n" + 
 				"	          </tbody>\r\n" + 
 				"	        </table>\r\n" + 
@@ -925,10 +951,10 @@ private String error="<html>\r\n" +
 				"	var myChart = new Chart(ctx, {\r\n" + 
 				"	    type: 'bar',\r\n" + 
 				"	    data: {\r\n" + 
-				"	        labels: ['Average (sec)', 'Maximum (sec)', 'Minimum (sec)'],\r\n" + 
+				"	        labels: ['Average (mins)', 'Maximum (mins)', 'Minimum (mins)'],\r\n" + 
 				"	        datasets: [{\r\n" + 
 				"	            label: 'Flight Time (1 Waypoint)',\r\n" + 
-				"            data: ["+duration1+","+max1+","+min1+"],\r\n" + 
+				"            data: ["+duration1/60+","+max1/60+","+min1/60+"],\r\n" + 
 				"	            backgroundColor: [\r\n" + 
 				"	                'rgba(255, 77, 0, 1)',\r\n" + 
 				"	                'rgba(255, 77, 0, 1)',\r\n" + 
@@ -942,7 +968,7 @@ private String error="<html>\r\n" +
 				"					],\r\n" + 
 				"	            borderWidth: 1\r\n" + 
 				"	        },{label: 'Flight Time (2 Waypoints)',\r\n" + 
-				"            data: ["+duration2+","+max2+","+min2+"],\r\n" + 
+				"            data: ["+duration2/60+","+max2/60+","+min2/60+"],\r\n" + 
 				"	            backgroundColor: [\r\n" + 
 				"	                'rgba(54, 162, 235, 1)',\r\n" + 
 				"	                'rgba(54, 162, 235, 1)',\r\n" + 
@@ -956,7 +982,7 @@ private String error="<html>\r\n" +
 				"					],\r\n" + 
 				"	            borderWidth: 1\r\n" + 
 				"	        },{label: 'Flight Time (3 Waypoints)',\r\n" + 
-				"            data: ["+duration3+","+max3+","+min3+"],\r\n" + 
+				"            data: ["+duration3/60+","+max3/60+","+min3/60+"],\r\n" + 
 				"	            backgroundColor: [\r\n" + 
 				"	                'rgba(255, 99, 132, 0.95)',\r\n" + 
 				"	                'rgba(255, 99, 132, 0.95)',\r\n" + 
@@ -972,24 +998,30 @@ private String error="<html>\r\n" +
 				"	        }\r\n" + 
 				"			]		\r\n" + 
 				"	    },\r\n" + 
-				"	    options: {\r\n" + 
-				"	        scales: {\r\n" + 
-				"	            yAxes: [{\r\n" + 
-				"	                ticks: {\r\n" + 
-				"	                    beginAtZero: true\r\n" + 
-				"	                }\r\n" + 
-				"	            }]\r\n" + 
-				"	        }\r\n" + 
-				"	    }\r\n" + 
+				"	   options: {\r\n" + 
+				"        scales: {\r\n" + 
+				"            yAxes: [{\r\n" + 
+				"                ticks: {\r\n" + 
+				"                    beginAtZero: true\r\n" + 
+				"                }\r\n" + 
+				"            }],\r\n" + 
+				"			x: {\r\n" + 
+				"                type: 'time',\r\n" + 
+				"                time: {\r\n" + 
+				"                    unit: 'minute'\r\n" + 
+				"                }\r\n" + 
+				"            }\r\n" + 
+				"        }\r\n" + 
+				"    }"+
 				"	});\r\n" + 
 				"	var ctx = document.getElementById('chart');\r\n" + 
 				"	var myChart = new Chart(ctx, {\r\n" + 
 				"	    type: 'bar',\r\n" + 
 				"	    data: {\r\n" + 
-				"	        labels: ['Average (sec)', 'Maximum (sec)', 'Minimum (sec)'],\r\n" + 
+				"	        labels: ['Average (mins)', 'Maximum (mins)', 'Minimum (mins)'],\r\n" + 
 				"	        datasets: [{\r\n" + 
 				"	            label: 'Overall Flight Time ',\r\n" + 
-				"            data: ["+duration+","+max+","+min+"],\r\n" + 
+				"            data: ["+duration/60+","+max/60+","+min/60+"],\r\n" + 
 				"	            backgroundColor: [\r\n" + 
 				"	                'rgba(255, 77, 0, 1)',\r\n" + 
 				"	                'rgba(255, 77, 0, 1)',\r\n" + 
@@ -1005,15 +1037,21 @@ private String error="<html>\r\n" +
 				"	        }\r\n" + 
 				"			]		\r\n" + 
 				"	    },\r\n" + 
-				"	    options: {\r\n" + 
-				"	        scales: {\r\n" + 
-				"	            yAxes: [{\r\n" + 
-				"	                ticks: {\r\n" + 
-				"	                    beginAtZero: true\r\n" + 
-				"	                }\r\n" + 
-				"	            }]\r\n" + 
-				"	        }\r\n" + 
-				"	    }\r\n" + 
+				"	   options: {\r\n" + 
+				"        scales: {\r\n" + 
+				"            yAxes: [{\r\n" + 
+				"                ticks: {\r\n" + 
+				"                    beginAtZero: true\r\n" + 
+				"                }\r\n" + 
+				"            }],\r\n" + 
+				"			x: {\r\n" + 
+				"                type: 'time',\r\n" + 
+				"                time: {\r\n" + 
+				"                    unit: 'minute'\r\n" + 
+				"                }\r\n" + 
+				"            }\r\n" + 
+				"        }\r\n" + 
+				"    }"+
 				"	});\r\n" + 
 				"	var ctx = document.getElementById('pie');\r\n" + 
 				"	var myChart = new Chart(ctx, {\r\n" + 
@@ -1042,19 +1080,23 @@ private String error="<html>\r\n" +
 				"	var myChart = new Chart(ctx, {\r\n" + 
 				"	    type: 'doughnut',\r\n" + 
 				"	    data: {\r\n" + 
-				"	        labels: ['Melatonin Capsules', 'Aspirin', 'Ventolin Inhalor', 'Solpadeine Capsules'],\r\n" + 
+				"	        labels: ['Melatonin Capsules', 'Aspirin', 'Ventolin Inhalor', 'Solpadeine Capsules','Zinc Tablets','Vitamin D Capsules'],\r\n" + 
 				"	        datasets: [{\r\n" + 
 				"	            label: 'Products Bought ',\r\n" + 
-				"            data: ["+mel+","+asp+","+vent+","+solp+"],\r\n" + 
+				"            data: ["+mel+","+asp+","+vent+","+solp+","+zinc+","+vitd+"],\r\n" + 
 				"	            backgroundColor: [\r\n" + 
 				"	                'rgba(0, 255, 0, 0.95)',\r\n" + 
 				"	                'rgba(255, 0, 255, 1)',\r\n" + 
 				"	                'rgba(255, 0, 0, 1)',\r\n" + 
-				"	                'rgba(255, 255, 0, 0.95)'                \r\n" + 
+				"	                'rgba(255, 255, 0, 0.95)',                \r\n" + 
+				"					'rgba(0, 255, 255, 1)',"+
+                "					'rgba(122, 122, 255, 0.95)' "+
 				"	            ],\r\n" + 
 				"	            borderColor: [\r\n" + 
 				"	                'rgba(0, 0, 0, 1)',\r\n" + 
 				"	                'rgba(0, 0, 0, 1)',\r\n" + 
+				"	                'rgba(0, 0, 0, 1)',      \r\n" + 
+				"					'rgba(0, 0, 0, 1)',\r\n" + 
 				"	                'rgba(0, 0, 0, 1)',      \r\n" + 
 				"					'rgba(0, 0, 0, 1)',\r\n" + 
 				"				],\r\n" + 
@@ -1163,7 +1205,7 @@ private String error="<html>\r\n" +
 				"	<link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl\" crossorigin=\"anonymous\">\r\n" + 
 				"    <script src=\"https://js.stripe.com/v3/\">\r\n" + 
 				"	\r\n" + 
-				"	</script>\r\n" + 
+				"	</script>\r\n" + noBackPageScript+ 
 				"\r\n" + 
 				"    <link href=\"http://localhost:8080/dronet/carousel.css\" rel=\"stylesheet\">\r\n" + 
 				"\r\n" + 
@@ -1251,7 +1293,7 @@ private String error="<html>\r\n" +
 				"	  <p>"+customer.getEmail()+"</p>\r\n" + 
 				"	  </br>\r\n" + 
 				"	  <h3>Current Address</h3>\r\n" + 
-				"	  <p>"+getAddress(customer.getLatitude(),customer.getLongitude())+"</p>\r\n" + 
+				"	  <p class=\"col-4\">"+getAddress(customer.getLatitude(),customer.getLongitude())+"</p>\r\n" + 
 				"	   <form action= \"http://localhost:8080/dronet/restful-services/sampleservice/changeLocation\" method=\"GET\">\r\n" + 
 				"	<div class=\"d-grid gap-2 col-2 mx-auto\">\r\n" + 
 				"	<input class=\"w-25 btn btn-dark btn-lg\" type=\"submit\" value=\"Update Address\" id=\"addressbutton\"/>\r\n" + 
@@ -1291,7 +1333,7 @@ private String error="<html>\r\n" +
 				"	  \r\n" + 
 				"	  \r\n" + 
 				"	<h3>Order History</h3>\r\n" + 
-				"	<div class=\"card-body\">\r\n" + 
+				"	<div class=\"card-body col-11\">\r\n" + 
 				"	<!--	<table class=\"my-table table table-dark table-striped\">-->\r\n" + 
 				"	<table class=\"my-table table-striped table table-hover align-middle\">\r\n" + 
 				"	<thead class=\"table-dark\">\r\n" + 
@@ -1299,10 +1341,10 @@ private String error="<html>\r\n" +
 				"			<th >Total Orders Placed</th>\r\n" + 
 				"			<th>Recieved</th>\r\n" + 
 				"			<th>Pending</th>\r\n" + 
-				"		</tr>\r\n" + 
+				"		</tr>\r\n" +  
 				"		</thead>\r\n" + 
 				"		<tr>\r\n" + 
-				"			<th id=\"myText1\" name=\"myText1\" type=\"text\" scope=\"row\">"+total+"</th>\r\n" + 
+				"			<td id=\"myText1\" name=\"myText1\" type=\"text\" scope=\"row\">"+total+"</td>\r\n" + 
 				"			<td>"+delivered+"</td>\r\n" + 
 				"			<td>"+pending+"</td>			\r\n" + 
 				"</td>\r\n" + 
@@ -1370,7 +1412,6 @@ private String error="<html>\r\n" +
 	public InputStream carousel() {
 		DeliveryDAO deldao=new DeliveryDAO();
 		File f;
-		System.out.println("isloggedin: "+isLoggedIn());
 		if(!isLoggedIn()) {
 			return loggedout();
 //			f=new File("C:\\Program Files\\Apache Software Foundation\\Tomcat 8.5\\webapps\\dronet\\error2.jsp");
@@ -1725,21 +1766,22 @@ private String error="<html>\r\n" +
 		request.getSession(true);
 		HttpSession session = request.getSession();
 		session.setAttribute("user","loggedout");
-		System.out.println("LOGGED IN "+session.getAttribute("user"));
 		return indexPage;
 	}
 	
 	public boolean isLoggedIn() {
 		request.getSession(true);
 		HttpSession session = request.getSession();		
+		if(session==null) {
+			return false;
+		}
 		String email=session.getAttribute("user").toString();
-		System.out.println("Loggen in: "+email);
-		return !email.equals("loggedout");
+		return !email.equals("loggedout");		
 	}
 	
 	public String getAddress(String latitude,String longitude) throws JsonSyntaxException, JsonIOException, MalformedURLException, IOException {
 		long lastRequest = 0L;
-		String key="&key=myKEY";
+		String key="&key=AIzaSyCaRGxXQ8eIkhPlnUojB42dQbgEQSprSBA";
 //		
 		String latlng=latitude+","+longitude;
 		String[] words=latlng.split(" ");
@@ -1779,7 +1821,10 @@ private String error="<html>\r\n" +
 		String time=df.format(dfDuration);		
 		String[] duration=time.split("\\.");
 		int sec=Integer.parseInt(duration[1]);
-		sec=sec*60;
+		sec=sec*6;
+		if(duration[1].charAt(0)=='0') {
+			sec=sec/10;
+		}
 		String flightDuration=duration[0]+"."+sec;
 		String formattedTime=df.format(Double.parseDouble(flightDuration));
 		System.out.println("formatted time "+formattedTime);
@@ -1805,8 +1850,7 @@ private String error="<html>\r\n" +
 		ArrayList<ProductOrder> orders=(ArrayList<ProductOrder>) deldao.getAllProductOrders();
 		//take out one for this customer and are in cart
 		ArrayList<ProductOrder> myorders=new ArrayList<ProductOrder>();
-		for(ProductOrder order:orders) {
-			
+		for(ProductOrder order:orders) {		
 			if(order.getCustomer().getId()==customer.getId()) {
 				myorders.add(order);
 			}
@@ -1833,9 +1877,6 @@ private String error="<html>\r\n" +
 		table+="</tr>";	
 		table+="</thead>";	
 
-	
-
-		
 				for(int i=0;i<myorders.size();i++) {
 					table+="<tr>";
 					table+="<td type=\"text\" scope=\"row\" class=\"fw-bold\">"+myorders.get(i).getId()+"</td>";
@@ -1844,9 +1885,7 @@ private String error="<html>\r\n" +
 					table+=	"<td>"+getAddress(myorders.get(i).getLatitude(),myorders.get(i).getLongitude())+"</td>";
 					table+=	" <td>"+myorders.get(i).getOrderstatus()+"</td>";
 					table+=	"</tr>"; 
-
 				 }
-
 
 				table+="</table>";
 				
@@ -2276,8 +2315,7 @@ private String error="<html>\r\n" +
 		DeliveryDAO deldao=new DeliveryDAO();
 	//	Stripe.apiKey="pk_test_51INyTFGtkOOMud5PO6NkF9GW7kibpp8thYn38BSYTo59o9QHzNiD3OTMe7GgUdh3IXjsEFF7cYBDTEYG1RcFBJcy00z4hcmnkB";
 		Stripe.apiKey="sk_test_51INyTFGtkOOMud5PVHZcqcBaUiKgo9i3LvvmJYuD0dnJiYqQHQHnbZn9ZPVyNksfbOWcIgDNZo7JF0lvZWLjMfAX00GOSzJPOn";
-//db checking here
-//		
+	
 		request.getSession(true);
 		HttpSession session = request.getSession();	
 		
@@ -2288,9 +2326,8 @@ private String error="<html>\r\n" +
 		
 		Product product=deldao.getProductById(Integer.valueOf(productid));
 		
-		session.setAttribute("productid",productid);
 		
-		System.out.println("ProductID:"+productid);
+		session.setAttribute("productid",productid);
 
 		//create a checkout session
 		SessionCreateParams params =
@@ -2321,9 +2358,8 @@ private String error="<html>\r\n" +
 
 		      Map<String, String> responseData = new HashMap();
 		      responseData.put("id", stripesession.getId());
-		      //responseData.put("id", "dave");
-
-		      System.out.println(responseData.toString());
+		
+		     
 		      return gson.toJson(responseData);
 		}
 		
@@ -2354,9 +2390,16 @@ private String error="<html>\r\n" +
 		String productid=session.getAttribute("productid").toString();
 		Customer customer=deldao.getCustomerByEmail(email);
 		Product product=deldao.getProductById(Integer.parseInt(productid));
+		if(product.getStock()>0) {
+			product.setStock(product.getStock()-1);
+			deldao.mergeProduct(product);
+		}
+		else {
+			return noStock;
+		}
 		
 		double distanceInMetres=distFrom(53.502956,-6.450588,Double.parseDouble(customer.getLatitude()),Double.parseDouble(customer.getLongitude()));
-		double sleepTime=35;//sleep+landing+takeoff time
+		double sleepTime=30;//sleep+landing+takeoff time
 		int speed=5;//5 m/s
 		double flightDuration=((distanceInMetres/speed)+sleepTime);
 		
@@ -2450,7 +2493,8 @@ private String error="<html>\r\n" +
 				"  <div class=\"container\">\r\n" + 
 				"   <form class=\"form-inline\" action= \"http://localhost:8080/dronet/restful-services/sampleservice/orders\" method=\"GET\">    \r\n" + 
 				"    <h1 class=\"mt-5\">Order Success!!!</h1>\r\n" + 
-				"    <p class=\"lead\">Once the Drone Flight is initiated, it will be at your location in 2.34 minutes...</p>\r\n" + 
+				"    <p class=\"lead\">We package and deliver orders at 1pm and 4pm each day</p>\r\n" + 
+				"    <p class=\"lead\">Once the Drone Flight is initiated, it will be at your location in "+dfDuration+"</p>\r\n" + 
 				"    <p>Check the status of your order on the \r\n" + 
 				"	<input class=\"btn btn-dark btn-sm\" type=\"submit\" value=\"Orders Page\" /></form></p>" + 
 				"		<form action= \"http://localhost:8080/dronet/restful-services/sampleservice/carousel\" method=\"GET\">        \r\n" + 
@@ -2558,9 +2602,9 @@ return success;
 		request.getSession(true);
 		HttpSession session = request.getSession();		
 		String email=session.getAttribute("user").toString();
-	//	String url="https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=mykey";
+	//	String url="https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyCaRGxXQ8eIkhPlnUojB42dQbgEQSprSBA";
 		
-		String key="&key=mykey";
+		String key="&key=AIzaSyCaRGxXQ8eIkhPlnUojB42dQbgEQSprSBA";
 //		
 		String[] words=address.split(" ");
 		StringBuilder sb = new StringBuilder();
@@ -2584,10 +2628,7 @@ return success;
                 GeocodeResponse response=gson.fromJson(new BufferedReader(new InputStreamReader(new URL(url).openStream())), GeocodeResponse.class);
                 List<Result> results= response.getResults();
                // System.out.println(results.toString()+response.getStatus().toString());
-                
-                System.out.println(results.get(0).getGeometry().getLocation().getLat());
-                System.out.println(results.get(0).getGeometry().getLocation().getLng());
-                
+              
                 Customer customer=deldao.getCustomerByEmail(email);
         		
         		if(customer.getName()!=null) {	

@@ -25,20 +25,30 @@ public class Product {
 	private String name;
 	private String image;
 	private int price;
+	private int stock;
 	
 	public Product() {
 		
 	}
 
-	public Product( String name, String image, int price) {
+	public Product( String name, String image, int price,int stock) {
 		super();
 		this.name = name;
 		this.image = image;
 		this.price = price;
+		this.stock=stock;
 	}
 
+ 
 
+	@XmlElement
+	public int getStock() {
+		return stock;
+	}
 
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
 
 	@XmlElement
 	public int getId() {

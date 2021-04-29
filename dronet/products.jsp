@@ -214,7 +214,7 @@ function sortTable(n) {
 		</tr>
 		<tr>
 			<td id="myText3" scope="row">20</td>
-			<td><img src="https://onlinedoctor.lloydspharmacy.com/image/107782/16x9/400/225/51cab9c66cf898faa3bed10488646683/mC/ventolin---picture.jpg" height="200" width="200"/></td>
+			<td><img src="https://cdn.shopify.com/s/files/1/0341/8718/2139/products/Zinc50mg0001_grande.png?2534" height="200" width="200"/></td>
 			<td>Ventolin Inhalor</td>
 			<td>25</td>
 			<td style="text-align:center;">

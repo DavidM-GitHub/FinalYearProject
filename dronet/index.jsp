@@ -56,7 +56,7 @@
 			<form action= "http://localhost:8080/dronet/restful-services/sampleservice/registration" method="GET"> 
 	<button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
 	</form>
-    <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+    <p class="mt-5 mb-3 text-muted">&copy; 2020-2021</p>
 </main>
 
 

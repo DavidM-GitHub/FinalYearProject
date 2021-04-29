@@ -13,6 +13,7 @@ body {
  */
 
 .sidebar {
+	font-size: .875rem;
   position: fixed;
   top: 0;
   /* rtl:raw:
@@ -64,7 +65,6 @@ body {
   font-size: .75rem;
   text-transform: uppercase;
 }
-
 
 .form-control-dark {
   color: #fff;

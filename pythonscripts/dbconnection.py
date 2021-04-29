@@ -1,4 +1,5 @@
 import mysql.connector
+import sys
 
 db = mysql.connector.connect(user='root', password='root',
                                 host='localhost',
@@ -65,6 +66,9 @@ points=[3];
 i=0;
 ids=list();
 point={};
+if(len(coordinates)==1):
+    print("No Orders Found");
+    sys.exit();
 for row in coordinates:
                 print("ID: ",row[0])
                 print("Longitude: ", row[1])

@@ -34,7 +34,7 @@ public class GeocodeResponse {
             floor,
             room;
         }
-
+ 
         public static class AddressComponent {
 
             private String long_name;

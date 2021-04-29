@@ -364,7 +364,7 @@ var myChart = new Chart(ctx, {
         labels: ['Average (sec)', 'Maximum (sec)', 'Minimum (sec)'],
         datasets: [{
             label: 'Overall Flight Time ',
-            data: [130, 145, 120],
+            data: [2.1, 1.7, 2],
             backgroundColor: [
                 'rgba(255, 77, 0, 1)',
                 'rgba(255, 77, 0, 1)',
@@ -386,7 +386,13 @@ var myChart = new Chart(ctx, {
                 ticks: {
                     beginAtZero: true
                 }
-            }]
+            }],
+			x: {
+                type: 'time',
+                time: {
+                    unit: 'minute'
+                }
+            }
         }
     }
 });
@@ -417,20 +423,24 @@ var ctx = document.getElementById('doughnut');
 var myChart = new Chart(ctx, {
     type: 'doughnut',
     data: {
-        labels: ['Melatonin Capsules', 'Aspirin', 'Ventolin Inhalor', 'Solpadeine Capsules'],
+        labels: ['Melatonin Capsules', 'Aspirin', 'Ventolin Inhalor', 'Solpadeine Capsules','zinc','vuaaaa'],
         datasets: [{
             label: 'Products Bought ',
-            data: [130, 145, 120,55],
+            data: [130, 145, 120,55,55,55],
             backgroundColor: [
                 'rgba(0, 255, 0, 0.95)',
                 'rgba(255, 0, 255, 1)',
                 'rgba(255, 0, 0, 1)',
-                'rgba(255, 255, 0, 0.95)'                
+                'rgba(255, 255, 0, 0.95)',
+				'rgba(0, 255, 255, 1)',
+                'rgba(122, 122, 255, 0.95)'                    
             ],
             borderColor: [
                 'rgba(0, 0, 0, 1)',
                 'rgba(0, 0, 0, 1)',
                 'rgba(0, 0, 0, 1)',      
+				'rgba(0, 0, 0, 1)',
+				'rgba(0, 0, 0, 1)',      
 				'rgba(0, 0, 0, 1)',
 			],
             borderWidth: 1

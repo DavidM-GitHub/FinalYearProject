@@ -178,7 +178,7 @@
         <div class="container">
           <div class="carousel-caption text-end" id="caption3">
             <h1>Need to change your Location?</h1>
-            <p>We deliver everywhere just enter your gps co-ordinates and press submit <a class="btn btn-lg btn-dark btn-primary" href="changeLocation">Browse gallery</a></p>
+            <p>We deliver everywhere just enter your gps co-ordinates and press submit <a class="btn btn-lg btn-dark btn-primary" href="changeLocation">Update Address</a></p>
           </div>
         </div>
       </div>
@@ -247,7 +247,7 @@
     <div class="row featurette" id="beginnings">
       <div class="col-md-7 order-md-2">
         <h2 class="featurette-heading">How we came about. <span class="text-muted">New beginings. </span></h2>
-        <p class="lead">Inspired by the current climate where people are limited to their homes as the Corona Virus pandemic has caused havoc accross the world. Dronet came about with the simple but innovative idea to provide Drone As A Service to those in need of medical suplies that cant leave their home as they are elderly, struggle with mobility or even because they are in quarantine</p>
+        <p class="lead">Inspired by the current climate where people are limited to their homes as the Corona Virus pandemic has caused havoc accross the world. Dronet came about with the simple but innovative idea to provide Drone As A Service to those in need of medical suplies that cant leave their home as they are elderly, struggle with mobility or even because they are in quarantine.</p>
       </div>
       <div class="col-md-5 order-md-1">
 	  </br>
@@ -279,7 +279,7 @@
   <!-- FOOTER -->
   <footer class="container">
     <p class="float-end"><a href="#">Back to top</a></p>
-    <p>&copy; 2017–2021 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    <p>&copy; 2020-2021 Company, Inc.  </p>
   </footer>
 </main>
 </div>

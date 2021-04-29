@@ -31,7 +31,7 @@ public class DeliveryDAO {
 		em.getTransaction().commit();
 		em.close();
 	}
-	
+	 
 	public Customer mergeCustomer(Customer customer) {
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
@@ -183,21 +183,6 @@ public class DeliveryDAO {
 		return product;
 	}
 	
-	public void persistDrone(Drone drone) {
-		EntityManager em = emf.createEntityManager();
-		em.getTransaction().begin();
-		em.persist(drone);
-		em.getTransaction().commit();
-		em.close();
-	}
-	
-	public void persistPackage(Package load) {
-		EntityManager em = emf.createEntityManager();
-		em.getTransaction().begin();
-		em.persist(load);
-		em.getTransaction().commit();
-		em.close();
-	}
 	
 	public void persistProduct(Product product) {
 		EntityManager em = emf.createEntityManager();
@@ -207,21 +192,6 @@ public class DeliveryDAO {
 		em.close();
 	}
 	
-	public void persistRoute(Route route) {
-		EntityManager em = emf.createEntityManager();
-		em.getTransaction().begin();
-		em.persist(route);
-		em.getTransaction().commit();
-		em.close();
-	}
-	
-	public void persistWarehouse(Warehouse warehouse) {
-		EntityManager em = emf.createEntityManager();
-		em.getTransaction().begin();
-		em.persist(warehouse);
-		em.getTransaction().commit();
-		em.close();
-	}
 	
 	public void persistDroneFlight(DroneFlight droneFlight) {
 		EntityManager em = emf.createEntityManager();

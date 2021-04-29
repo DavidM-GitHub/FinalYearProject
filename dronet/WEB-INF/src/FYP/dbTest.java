@@ -22,8 +22,9 @@ public class dbTest {
 	public dbTest() throws JsonSyntaxException, JsonIOException, MalformedURLException, IOException {
 		
 //		DecimalFormat df = new DecimalFormat("#.##"); // Set your desired format here.
-//
-//		double distanceInMetres=distFrom(53.502956,-6.450588,53.5039841,-6.454939);
+////
+//		double distanceInMetres=distFrom(53.502956,-6.450588,53.5032596,-6.4508143);
+//		System.out.println(distanceInMetres);
 //		double sleepTime=35;//sleep+landing+takeoff time
 //		int speed=5;//5 m/s
 //		double flightDuration=((distanceInMetres/speed)+sleepTime)/60;
@@ -31,7 +32,7 @@ public class dbTest {
 //		String flightDuratio="1.6154461669921873";
 //		String time=df.format(flightDuratio);
 //		System.out.println(time);
-//		
+////		
 //String[] duration=time.split("\\.");
 //System.out.println(duration[1]);
 //int sec=Integer.parseInt(duration[1]);
@@ -43,27 +44,29 @@ public class dbTest {
 //		System.out.println(formattedTime);
 //		
 		
-		DeliveryDAO deliveryDAO=new DeliveryDAO();
+	//	DeliveryDAO deliveryDAO=new DeliveryDAO();
+////		
+////		Customer customer=deliveryDAO.getCustomerById(78);
+////		//Product p4=new Product("Solpadeine","https://www.medicine-online.org/4462-large_default/solpadeine-24-tablets-.jpg",12);
+////		Product product=deliveryDAO.getProductById(21);
+////		ProductOrder order=new ProductOrder(customer, product, customer.getLatitude(),customer.getLongitude(), product.getPrice(),"ordered");
+//////		//String orderstatus)
+//////		Customer c3=new Customer("Dave","dave@g.c","p123");
+//////
+//////		ProductOrder po=new ProductOrder(c3,p4,"53.5032596","-6.4508143",p4.getPrice(),"Ordered");
+////		deliveryDAO.persistProductOrder(order);
+////		
+//		ProductOrder order1=deliveryDAO.getProductOrderById(124);
+//		order1.setLatitude("53.4997761");
+//		order1.setLongitude("-6.4512793");
+//		order1.setOrderstatus("ordered");
+//		deliveryDAO.mergeProductOrder(order1);
 //		
-//		Customer customer=deliveryDAO.getCustomerById(78);
-//		//Product p4=new Product("Solpadeine","https://www.medicine-online.org/4462-large_default/solpadeine-24-tablets-.jpg",12);
-//		Product product=deliveryDAO.getProductById(21);
-//		ProductOrder order=new ProductOrder(customer, product, customer.getLatitude(),customer.getLongitude(), product.getPrice(),"ordered");
-////		//String orderstatus)
-////		Customer c3=new Customer("Dave","dave@g.c","p123");
-////
-////		ProductOrder po=new ProductOrder(c3,p4,"53.5032596","-6.4508143",p4.getPrice(),"Ordered");
-//		deliveryDAO.persistProductOrder(order);
-//		
-		ProductOrder order1=deliveryDAO.getProductOrderById(124);
-		order1.setLatitude("53.4997761");
-		order1.setLongitude("-6.4512793");
-		deliveryDAO.mergeProductOrder(order1);
-		
-		ProductOrder order2=deliveryDAO.getProductOrderById(125);
-		order2.setLatitude("53.4997125");
-		order2.setLongitude("-6.4513132");
-		deliveryDAO.mergeProductOrder(order2);
+//		ProductOrder order2=deliveryDAO.getProductOrderById(125);
+//		order2.setLatitude("53.4997125");
+//		order2.setLongitude("-6.4513132");
+//		order2.setOrderstatus("ordered");
+//		deliveryDAO.mergeProductOrder(order2);
 
 //		Customer cust=deliveryDAO.getCustomerById(42);
 //		cust.setAdmin("Yes");
@@ -116,19 +119,27 @@ public class dbTest {
 //		Product p1=new Product("penisulin",1);
 //		Product p2=new Product("solpadine",2);
 //		Product p1=new Product("Welonox Melatonin","https://m.media-amazon.com/images/I/315ZRpnHLtL.jpg",25);
-//		Product p2=new Product("Aspirin","https://www.jeancoutu.com/catalog-images/180166/en/viewer/0/aspirin-aspirin-daily-low-dose-tablets-81-mg-120-units.png",45);
-//		Product p3=new Product("Ventolin Inhalor","https://onlinedoctor.lloydspharmacy.com/image/107782/16x9/400/225/51cab9c66cf898faa3bed10488646683/mC/ventolin---picture.jpg",34);
-		
-
-//
-//		deliveryDAO.persistProduct(p1);
+//		Product p2=new Product("Zinc Tablets","https://cdn.shopify.com/s/files/1/0341/8718/2139/products/Zinc50mg0001_grande.png?2534",21,100);
+//		Product p3=new Product("Vitamin D3 Capsules","https://www.phd.com/media/catalog/product/v/i/vitmain-d3-180-capsules.png?quality=80&fit=bounds&height=700&width=700&canvas=700:700",29,100);
+//		
 //		deliveryDAO.persistProduct(p2);
 //		deliveryDAO.persistProduct(p3);
-//		deliveryDAO.persistProduct(p4);
-
+////		deliveryDAO.persistProduct(p3);
+////		deliveryDAO.persistProduct(p4);
+//
 //		Product product=deliveryDAO.getProductById(21);
-//product.setName("Solpadeine Capsules");
+//		product.setStock(100);
+////		Product product1=deliveryDAO.getProductById(18);
+////		product1.setStock(100);
+////		Product product2=deliveryDAO.getProductById(19);
+////		product2.setStock(100);
+////		Product product3=deliveryDAO.getProductById(20);
+////		product3.setStock(100);
 //		deliveryDAO.mergeProduct(product);
+//		deliveryDAO.mergeProduct(product1);
+//		deliveryDAO.mergeProduct(product2);
+//		deliveryDAO.mergeProduct(product3);
+
 //		
 //		List<Product> products=new ArrayList<Product>();
 ////		List<Product> products2=new ArrayList<Product>();
@@ -200,7 +211,27 @@ public class dbTest {
 //
 //		
 //		Warehouse w1=new Warehouse(99,33,load);
-		
+		//System.out.println(getFormattedDuration(238.0));
+	}
+	
+	public String getFormattedDuration(Double dfDuration) {
+		dfDuration=dfDuration/60;
+		DecimalFormat df = new DecimalFormat("#.##"); // Set your desired format here.
+		String time=df.format(dfDuration);		
+		String[] duration=time.split("\\.");
+		int sec=Integer.parseInt(duration[1]);
+		sec=sec*6;
+		System.out.println();
+		if(duration[1].charAt(0)=='0') {
+			sec=sec/10;
+		}
+		String flightDuration=duration[0]+"."+sec;
+		String formattedTime=df.format(Double.parseDouble(flightDuration));
+		System.out.println("formatted time "+formattedTime);
+		String[] formattedDuration=formattedTime.split("\\.");
+		String total=formattedDuration[0]+" minutes "+formattedDuration[1]+" seconds";
+		System.out.println("total: "+total);
+		return total;
 	}
 	
 	public static float distFrom(double lat1, double lng1, double lat2, double lng2) {
