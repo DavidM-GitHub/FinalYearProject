@@ -1816,21 +1816,13 @@ private String error="<html>\r\n" +
 	}
 	
 	public String getFormattedDuration(Double dfDuration) {
+		DecimalFormat df = new DecimalFormat("#.##"); 
+		Double sec=dfDuration%60;
 		dfDuration=dfDuration/60;
-		DecimalFormat df = new DecimalFormat("#.##"); // Set your desired format here.
-		String time=df.format(dfDuration);		
+		String time=df.format(dfDuration);	
 		String[] duration=time.split("\\.");
-		int sec=Integer.parseInt(duration[1]);
-		sec=sec*6;
-		if(duration[1].charAt(0)=='0') {
-			sec=sec/10;
-		}
-		String flightDuration=duration[0]+"."+sec;
-		String formattedTime=df.format(Double.parseDouble(flightDuration));
-		System.out.println("formatted time "+formattedTime);
-		String[] formattedDuration=formattedTime.split("\\.");
-		String total=formattedDuration[0]+" minutes "+formattedDuration[1]+" seconds";
-		System.out.println("total: "+total);
+		String seconds=df.format(sec);		
+		String total=duration[0]+" minutes "+seconds+" seconds";
 		return total;
 	}
 	

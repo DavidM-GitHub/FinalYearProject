@@ -13,7 +13,7 @@
 <header >
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Dronet</a>
+      <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="carousel">Dronet</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -23,13 +23,10 @@
             <a class="nav-link active" aria-current="page" href="carousel">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">My Profile</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            <a class="nav-link" href="myprofile">My Profile</a>
           </li>
         </ul>
-        <ul class="navbar-nav px-3">
+        <ul class="navbar-nav px-3"> 
     <li class="nav-item text-nowrap">
       <a class="nav-link" href="index">Sign out</a>
     </li>
@@ -50,21 +47,21 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="orders">
               <span data-feather="file"></span>
-              Orders
+              My Orders
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="browseProducts">
               <span data-feather="shopping-cart"></span>
-              Products
+              Browse Products
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="changeLocation">
               <span data-feather="users"></span>
-              My Details
+              Change Address
             </a>
           </li>
           <li class="nav-item">
@@ -73,46 +70,9 @@
               Waypoint Map
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="layers"></span>
-              Integrations
-            </a>
-          </li>
         </ul>
 
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          <span>Quick Navigation</span>
-          <a class="link-secondary" href="#" aria-label="Add a new report">
-            <span data-feather="plus-circle"></span>
-          </a>
-        </h6>
-        <ul class="nav flex-column mb-2">
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Current month
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Last quarter
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Social engagement
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Year-end sale
-            </a>
-          </li>
-        </ul>
+    
       </div>
     </nav>
 
