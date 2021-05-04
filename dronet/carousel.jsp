@@ -203,7 +203,7 @@
     <!-- Three columns of text below the carousel -->
     <div class="row" id="equipment">
       <div class="col-lg-4" >     
-		<img src="https://a248.e.akamai.net/f/248/9086/10h/origin-d5.scene7.com/is/image/bluestembrands/4NN5QC0000010_VA_999" alt="skyviper" width="50%" height="50%">
+		<img src="https://i.ebayimg.com/images/g/ex8AAOSwHwReT7ri/s-l640.jpg" alt="skyviper" width="50%" height="50%">
         <h2>Our Drone</h2>
         <p>The drone we use to make the deliveries is the SkyViper Journey. It is lightweight, durable and has built-in GPS which allows us to send it to precise co-ordinates</p>
         <p><a class="btn btn-secondary" href="https://www.amazon.com/dp/B07G1RJNN9/ref=dp_prsubs_2?currency=EUR&language=en_US">View details &raquo;</a></p>

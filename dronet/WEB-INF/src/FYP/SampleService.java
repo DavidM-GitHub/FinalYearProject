@@ -415,11 +415,11 @@ private String error="<html>\r\n" +
 			return adminOnly;
 		}
 		String locations="";
-		
+		System.out.println("Size: "+orders.size());
 		for(ProductOrder order:orders) {
-			locations+=",[\"Customer ID: "+order.getCustomer().getId()+"\","+order.getLongitude()+", "+order.getLatitude()+"]\r\n";
+			locations+=",[\"Customer ID: "+order.getCustomer().getId()+"\","+order.getLatitude()+", "+order.getLongitude()+"]\r\n";
 		}
-		
+		System.out.println("LOCATIONS: "+locations);
 		String mapsJsp="<html lang=\"en\">\r\n" + 
 				"  <head>\r\n" + 
 				"    <meta charset=\"utf-8\">\r\n" + 
@@ -1771,7 +1771,7 @@ private String error="<html>\r\n" +
 	
 	public boolean isLoggedIn() {
 		request.getSession(true);
-		HttpSession session = request.getSession();		
+		HttpSession session = request.getSession();	
 		if(session==null) {
 			return false;
 		}
@@ -2636,7 +2636,7 @@ return success;
         		customer.setLatitude(String.valueOf(results.get(0).getGeometry().getLocation().getLat()));
         		deldao.mergeCustomer(customer);
         		//successpage
-        		f=new File("C:\\Program Files\\Apache Software Foundation\\Tomcat 8.5\\webapps\\dronet\\carousel.jsp");
+        		f=new File("C:\\Program Files\\Apache Software Foundation\\Tomcat 8.5\\webapps\\dronet\\detailsupdated.jsp");
         		}else {
         			f=new File("C:\\Program Files\\Apache Software Foundation\\Tomcat 8.5\\webapps\\dronet\\error2.jsp");
         		}

@@ -232,8 +232,10 @@ fly_to_set_altitude(5)
 set_home(homelocation)
 time.sleep(1)
 
+homepoint = LocationGlobalRelative(homelocation.lat, homelocation.lon, 5)
+
 print("Returning to Launch")
-goto_point_and_land("home",homelocation)
+goto_point_and_land("home",homepoint)
 
 # Close vehicle object before exiting script
 print("Close vehicle object")
